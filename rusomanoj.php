@@ -1,7 +1,9 @@
 <?php
 	
 session_start();
-require_once("twitteroauth/twitteroauth/twitteroauth.php"); //Path to twitteroauth library
+
+//to connect OAuth path 
+require_once("twitteroauth/twitteroauth/twitteroauth.php"); 
  
 $username = "rusomanoj88";
 $tweetno = 30;
@@ -15,6 +17,7 @@ function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oa
   return $connection;
 }
 
+//Connection with all the above credentials
 $connection = getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
  
 $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$username."&count=".$tweetno);
